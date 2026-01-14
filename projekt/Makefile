@@ -30,11 +30,11 @@ $(TARGET): $(OBJS)
 
 # szybkie uruchomienie z przykladowymi parametrami
 run: $(TARGET)
-	./$(TARGET) test_map.txt -p 40 -i 100
+	./$(TARGET) test.txt -p 40 -i 100
 
 # sprawdzenie wyciekow pamieci
 valgrind: $(TARGET)
-	valgrind --leak-check=full ./$(TARGET) test_map.txt -p 40 -i 100
+	valgrind --leak-check=full ./$(TARGET) test.txt -p 40 -i 100
 
 # regula czyszczenia (wpisujemy 'make clean' zeby posprzatac)
 clean:
