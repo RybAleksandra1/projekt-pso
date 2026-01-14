@@ -8,8 +8,7 @@
 *.elf
 
 # Linker output
-*.ilk
-*.map
+
 *.exp
 
 # Precompiled Headers
@@ -53,3 +52,16 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+# specyficznie dla tego projektu
+
+# Ignorujemy plik wykonywalny programu 
+pso
+
+# Ignorujemy pliki z wynikami (beda zasmiecac nam repo)
+*.csv
+*.log
+
+# Ignorujemy pliki ustawien edytora (zeby nie wysylac swoich ustawien VSCode)
+.vscode/
+.idea/
