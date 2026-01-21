@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>  // Biblioteka do obsługi getopt (flag CLI)
+#include <unistd.h>  // biblioteka do obsługi getopt (flag CLI)
+#include <getopt.h> // dla funkcji getopt (zmienna optarg)
 #include "pso.h"
 #include "map.h"
 #include "utils.h"
@@ -24,7 +25,6 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    map_file = argv[1]; // pierwszy argument to zawsze ścieżka do mapy
     int opt;
 
     // przetwarzanie flag przy pomocy getopt
@@ -38,6 +38,15 @@ int main(int argc, char *argv[]) {
                 fprintf(stderr, "Nieznany parametr. Uzycie: %s <mapa> [-p...] [-i...] [-c...] [-n...]\n", argv[0]);
                 return 1;
         }
+    }
+
+    // po pętli getopt, nazwa mapy powinna być na pozycji optind
+    if (optind < argc) {
+        map_file = argv[optind];
+    } else {
+        fprintf(stderr, "Blad: Musisz podac sciezke do pliku mapy!\n");
+        printf("Uzycie: %s <plik_mapy> [-p...] [-i...]\n", argv[0]);
+        return 1;
     }
 
     // Przygotowanie symulacjii
