@@ -11,11 +11,11 @@ def main():
     map_file = sys.argv[1]
     log_file = sys.argv[2]
 
-    # --- KONFIGURACJA: TU WPISZ SWOJE ITERACJE ---
+    # KONFIGURACJA: TU WPISUJEMY SWOJE ITERACJEE
     # Możesz zmienić te liczby na dowolne inne, np. [0, 50, 80, 99]
-    # Pamiętaj, że w C iteracje zwykle liczymy od 0.
+  
     MOJE_ITERACJE = [0, 5, 10, 25] 
-    # ---------------------------------------------
+ 
 
     # 1. WCZYTYWANIE MAPY
     try:
@@ -46,7 +46,7 @@ def main():
         available_iters = df['iter'].unique()
         selected_iters = []
 
-        # Dla każdej liczby, którą chciałaś, sprawdzamy czy istnieje
+        # Dla każdej liczby, którą chcieliśmy, sprawdzamy czy istnieje
         for cel in MOJE_ITERACJE:
             if cel in available_iters:
                 selected_iters.append(cel)

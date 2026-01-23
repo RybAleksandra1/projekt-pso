@@ -6,8 +6,8 @@ void init_random();
 
 // tu losujemy liczby tyou double z zakresu [min, max]
 double random_range(double min, double max);
-
 // a tu z zakresu[] 0,1]
 double random_01();
-
+//dodajemy info o void z generowaniem mapki
+void generate_hill_map(const char *filename, int w, int h);
 #endif

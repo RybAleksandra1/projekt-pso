@@ -33,6 +33,7 @@ double random_01() {
 //generowanie mapy 
 
 void generate_hill_map(const char *filename, int w, int h) {
+    // funckja tworzy/nadpisuje jakis plik
     FILE *f = fopen(filename, "w");
     if (!f) {
         fprintf(stderr, "error: nie można utworzyć pliku %s\n", filename);
@@ -42,6 +43,8 @@ void generate_hill_map(const char *filename, int w, int h) {
     fprintf(f, "%d %d\n", w, h);
 
     // Losujemy srodek gorki 
+    //musi byc przynajmenij 10 od brzegu
+    //na szczycie sygnal to 100
     double center_x = random_range(10.0, w - 10.0);
     double center_y = random_range(10.0, h - 10.0);
     double max_height = 100.0;
@@ -50,6 +53,8 @@ void generate_hill_map(const char *filename, int w, int h) {
 
     for (int i = 0; i < h; i++) {
         for (int j = 0; j < w; j++) {
+            //tu obliczamy odleglosc od gorki 
+            // i pozniej ja odejmujemy wiec im dalsza odleglosc tym mnijesza wartosc
             double dist = sqrt(pow(j - center_x, 2) + pow(i - center_y, 2));
             double value = max_height - dist;
             if (value < -100.0) value = -100.0;

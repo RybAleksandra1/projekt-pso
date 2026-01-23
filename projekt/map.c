@@ -5,6 +5,10 @@
 // za wylot poza mape bedziemy dawac jakas stala kary(bardzo mala wartosc)
 #define PENALTY_VALUE -1000000.0 
 
+//W funkcji load_map:
+//czytamy z dysku (hill.txt).
+//Zapisujemy do RAMu (do struktury Map), żeby drony mogły po tym "latać".
+
 Map* load_map(const char *filename) {
     FILE *f = fopen(filename, "r");
     if (!f) {
@@ -42,7 +46,7 @@ Map* load_map(const char *filename) {
     // tu mamy serce tego programu - fizycznie tworzymy w pamieci tabele
     // i wczytujemy do niej dane z pliku
     for (int i = 0; i < h; i++) {
-        m->data[i] = (double*)malloc(w * sizeof(double));
+        m->data[i] = (double*)malloc(w * sizeof(double));    //wiersze
 
         // procedura awaryjna - jak nie uda sie zarezerwowac pamieci 
         if (!m->data[i]) {
@@ -85,7 +89,7 @@ void free_map(Map *m) {
     // i na samym koncu zwalniamy sama strukture
     free(m);
 }
-// to nasz czujnik drona - sprawdza jakie wartosci sa w polu 
+// to nasz czujnik drona - sprawdza i daje wartosci jakie sa w danym polu
 // gdzie aktualnie jes dron 
 //3
 double get_fitness(Map *m, double x, double y) {

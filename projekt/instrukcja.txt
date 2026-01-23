@@ -1,0 +1,17 @@
+usuniecie poprzednich 
+
+rm maps/hill.txt misja_log.csv ewolucja_roju_wybrane.png
+
+
+skompilowanie generatora 
+gcc gen.c utils.c -o generator -lm
+./generator
+
+
+algorytm i symulacja
+make
+./pso maps/hill.txt -p 50 -i 100 -n 1
+
+
+wykres 
+python3 plot_report.py maps/hill.txt misja_log.csv

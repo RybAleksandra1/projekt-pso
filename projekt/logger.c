@@ -1,7 +1,7 @@
 #include "logger.h"
 #include <stdio.h>
 
-// init_log tworzy nowy plik logow (lub nadpisuje do istniejacego) i wpisuje naglowki kolumn CSV
+// init_log tworzy nowy plik logow(danych) (lub nadpisuje do istniejacego) i wpisuje NAGLOWKI kolumn CSV
 // parametry wejscia: const char *filename 
 // parametry wyjscia: brak (void)
 void init_log(const char *filename) {
@@ -30,8 +30,8 @@ void log_swarm(Swarm *swarm, int iteration, const char *filename) {
 
     // Przechodzimy przez czastki w roju
     for (int i = 0; i < swarm->count; i++) {
+        //Weź konkretnego drona (o numerze i) z całego roju i skopiuj jego dane do mojej podręcznej zmiennej p.
         Particle p = swarm->particles[i];
-
         fprintf(f, "%d,%d,%.4f,%.4f,%.4f\n", // Zapisujemy jedna linie dla każdego drona:
                 iteration,  // %d - numer iteracji
                 i, // %d - unikalny numer drona (indeks i)
